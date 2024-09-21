@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from 'react';
+import KeyboardPad from './components/keyboardpad';
 
 export default function Home() {
   const [prompt, setPrompt] = useState('');
   const [result, setResult] = useState('');
   const [loading, setLoading] = useState(false);
+  const [done, setDone] = useState(false);
 
   const handleSubmit = async () => {
     if (!prompt.trim()) {
@@ -42,18 +44,35 @@ export default function Home() {
   };
 
   return (
-    <div>
-      <div>This is testing Gemini API prompt and returned result</div>
+    <div className=''>
+      <h1 className='text-center'>Generative AI-powered calculator</h1>
       <input
         type="text"
         className="prompt"
         value={prompt}
         onChange={(e) => setPrompt(e.target.value)}
       />
-      <button onClick={handleSubmit}>Submit</button>
 
       {loading && <div>Loading...</div>}
       <div>{result}</div>
+      <KeyboardPad
+        onButtonClick={(value) => {
+          if (done) {
+            setPrompt(value);
+            setDone(false);
+          }
+          else if (value === 'CALC') {
+            handleSubmit();
+            setDone(true);
+          } else if (value === 'DEL' && prompt) {
+            setPrompt((prev) => prev.slice(0, -1));
+          } else if (value === 'pow') {
+            setPrompt((prev) => prev + '^');
+          } else {
+            setPrompt((prev) => prev + value);
+          }
+        }}
+      />
     </div>
   );
 }
