@@ -9,14 +9,14 @@ const KeyboardPad: React.FC<KeyboardPadProps> = ({ onButtonClick }) => {
         '7', '8', '9', '/',
         '4', '5', '6', '*', 
         '1', '2', '3', '-', 
-        '0', '.', '=', '+', 
+        '0', '. | °', '=', '+', 
         'pow', 'log', 'exp', 'sqrt',
-        '(', ')', 'x', 'y',
+        '(', ')', 'x', 'AC',
         'sin', 'cos', 'tan', "DEL",
     ];
 
     return (
-        <div>
+        <div className="flex-col justify-center items-center w-full">
             <div className="grid grid-cols-4 gap-2 p-4">
                 {buttons.map((button) => (
                 <button
@@ -32,7 +32,7 @@ const KeyboardPad: React.FC<KeyboardPadProps> = ({ onButtonClick }) => {
                 onClick={() => onButtonClick("CALC")} 
                 className='bg-cyan-600 w-full hover:bg-cyan-700 text-black font-bold py-2 px-15 rounded focus:outline-none focus:shadow-outline'
             >
-                CALC
+                CALCULATE
             </button>
         </div>
     );
