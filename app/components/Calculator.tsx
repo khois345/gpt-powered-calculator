@@ -61,7 +61,7 @@ export default function Calculator() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center m-auto w-3/5 p-5 text-center bg-neutral-700 rounded-md lg:h-[35.5rem] lg:w-[40rem]">
+    <div className="flex flex-col justify-center items-center m-auto w-5/6 p-5 text-center bg-neutral-700 rounded-md md:w-3/4 lg:h-[35.5rem] lg:w-[40rem]">
       <div className="rounded border text-right h-[12vh] w-[95%] bg-gray-100">
         {DEBUG ? (
         <input
