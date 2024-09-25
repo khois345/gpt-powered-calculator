@@ -25,7 +25,7 @@ Make sure you have the following installed:
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/your-username/gemini-calculator.git
+    git clone https://github.com/khois345/gpt-powered-calculator
     cd gemini-calculator
     ```
 
