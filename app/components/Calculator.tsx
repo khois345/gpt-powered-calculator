@@ -10,6 +10,7 @@ export default function Calculator() {
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
+  const [isError, setIsError] = useState(false);
   const clickTimeout = useRef<NodeJS.Timeout | null>(null);
 
   const handleSubmit = async () => {
@@ -36,10 +37,12 @@ export default function Calculator() {
         setResult(data.text_content);
       } else {
         setResult(`Error: ${data.error || "Failed to get response"}`);
+        setIsError(true);
       }
     } catch (error) {
       console.error("Error:", error);
-      setResult("Error: Failed to get a response from the server.");
+      setResult("Error: Failed to get a response from the server. Try again.");
+      setIsError(true);
     } finally {
       setLoading(false);
     }
@@ -56,7 +59,7 @@ export default function Calculator() {
         clickTimeout.current = setTimeout(() => {
           setPrompt((prev) => prev + ".");
           clickTimeout.current = null;
-        }, 300); // 300ms timeout for double click detection
+        }, 100); // 100ms timeout for double click detection
       }
   };
 
@@ -80,10 +83,16 @@ export default function Calculator() {
 
       <KeyboardPad
         onButtonClick={(value) => {
+          if (done && !isError) {
+            setPrompt("");
+            setDone(false);
+          }
+      
           switch (value) {
             case "CALC":
               handleSubmit();
               setDone(true);
+              setIsError(false);
               break;
             case "DEL":
               if (prompt) {
@@ -118,12 +127,8 @@ export default function Calculator() {
                 setPrompt((prev) => prev + "exp(");
                 break;
             default:
-              if (done) {
-                setPrompt(value);
-                setDone(false);
-              }
-              setPrompt((prev) => prev + value);
-              break;
+                setPrompt((prev) => prev + value);
+                break;
           }
         }}
       />
