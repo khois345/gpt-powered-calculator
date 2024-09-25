@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Gemini-Powered Calculator
 
-## Getting Started
+This project is a **Next.js** calculator application that integrates with the **Gemini API** for performing advanced mathematical calculations. It supports basic arithmetic, power, trigonometric functions, logarithms, and exponents. The app utilizes prompt engineering to evaluate user expressions using the Gemini API.
 
-First, run the development server:
+## Table of Contents
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Environment Variables](#environment-variables)
+- [Running the Project](#running-the-project)
+- [Usage](#usage)
+- [Troubleshooting](#troubleshooting)
+- [License](#license)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Requirements
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Make sure you have the following installed:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [Node.js](https://nodejs.org/en/download/) (v14.x or higher)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- Gemini API Key (from [Google's Gemini API](https://developers.generativeai.google))
+- NextJS and Tailwind
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Installation
 
-## Learn More
+1. **Clone the repository:**
 
-To learn more about Next.js, take a look at the following resources:
+    ```bash
+    git clone https://github.com/your-username/gemini-calculator.git
+    cd gemini-calculator
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Install dependencies:**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    Using `npm`:
+    ```bash
+    npm install
+    ```
 
-## Deploy on Vercel
+    or using `yarn`:
+    ```bash
+    yarn install
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Environment Variables
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project requires a `.env.local` file to store sensitive API information like the Gemini API key. Follow the steps below to create this file.
+
+1. In the root directory of your project, create a `.env.local` file:
+
+    ```bash
+    touch .env.local
+    ```
+
+2. Add the following environment variable to `.env.local`:
+
+    ```bash
+    NEXT_PUBLIC_GEMINI_API_KEY=your-gemini-api-key
+    ```
+
+    Replace `your-gemini-api-key` with the actual API key obtained from the Gemini API dashboard.
+
+3. Ensure `.env.local` is added to `.gitignore` to prevent it from being committed to version control:
+
+    ```bash
+    # .gitignore
+    .env.local
+    ```
+
+## Running the Project
+
+1. To run the development server, use the following command:
+
+    Using `npm`:
+    ```bash
+    npm run dev
+    ```
+
+    or using `yarn`:
+    ```bash
+    yarn dev
+    ```
+
+2. Open your browser and navigate to `http://localhost:3000`. You should now see the calculator interface.
+
+## Usage
+
+The calculator allows users to input various types of mathematical expressions. The Gemini API processes these inputs and returns the evaluated result.
+
+### Example Expressions:
+- **Addition**: `2 + 2`
+- **Power**: `3^2`
+- **Trigonometric functions**: `sin(30)`
+- **Logarithms**: `log(100)`
+- **Exponentiation**: `e^2`
+
+## Troubleshooting
+
+- **API Errors**: Ensure your Gemini API key is correctly placed in the `.env.local` file. If you're receiving errors like `500 Internal Server Error`, check the [Gemini API troubleshooting guide](https://developers.generativeai.google/guide/troubleshooting).
+  
+- **Environment Variables Not Loaded**: Make sure the `.env.local` file is properly created in the root directory of your project. If the environment variables are not loading, try restarting the server.
+
+## Note
+- This program is made for educational purposes only.
