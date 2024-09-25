@@ -72,7 +72,7 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error("Error while generating content:", error);
     return NextResponse.json(
-      { error: "Error generating content" },
+      { error: "Error generating content (API Service not available)." },
       { status: 500 }
     );
   }
