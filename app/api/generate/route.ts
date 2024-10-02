@@ -1,7 +1,7 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextRequest, NextResponse } from "next/server";
 
-const apiKey = process.env.NEXT_PUBLIC_API_KEY as string;
+const apiKey = process.env.API_KEY;
 
 if (!apiKey) {
   throw new Error("API key is not defined");
@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
   ];
 
   try {
-    const genAI = new GoogleGenerativeAI(apiKey);
+    const genAI = new GoogleGenerativeAI(apiKey as string);
     const model = genAI.getGenerativeModel({
       model: "gemini-1.5-pro",
     });
