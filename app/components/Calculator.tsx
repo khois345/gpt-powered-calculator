@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import KeyboardPad from "./KeyboardPad";
+import KeyboardPad from "./Keyboardpad";
 
 const DEBUG = false;
 
